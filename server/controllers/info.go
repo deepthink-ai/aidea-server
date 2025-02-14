@@ -188,9 +188,9 @@ func (ctl *InfoController) Capabilities(ctx context.Context, webCtx web.Context,
 		// 是否禁用数字人
 		"disable_digital_human": false,
 		// 是否禁用绘玩
-		"disable_gallery": false,
+		"disable_gallery": true,
 		// 是否禁用创作岛
-		"disable_creation_island": false,
+		"disable_creation_island": true,
 		// 是否允许文本转语音
 		"enable_voice_to_text": ctl.conf.EnableVoiceToText,
 		// 是否允许语音转文本
