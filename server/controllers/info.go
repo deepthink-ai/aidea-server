@@ -52,12 +52,7 @@ func (ctl *InfoController) Register(router web.Router) {
 }
 
 var qrCodes = []string{
-	"https://ssl.aicode.cc/ai-server/assets/%E4%BA%8C%E7%BB%B4%E7%A0%81.png",
-	"https://ssl.aicode.cc/ai-server/assets/qr-1.png",
-	"https://ssl.aicode.cc/ai-server/assets/qr-3.png",
-	"https://ssl.aicode.cc/ai-server/assets/qr-4.png",
-	"https://ssl.aicode.cc/ai-server/assets/qr-5.png",
-	"https://ssl.aicode.cc/ai-server/assets/qr-6.png",
+	"https://ssl.aicode.cc/projects/deepthink/qr.png",
 }
 
 // FreeChatCounts 免费聊天额度统计
@@ -78,13 +73,13 @@ func (ctl *InfoController) FreeChatCounts(ctx context.Context, webCtx web.Contex
 func (ctl *InfoController) shareInfo(ctx web.Context, user *auth.UserOptional) web.Response {
 	var res = web.M{
 		"qr_code": qrCodes[rand.Intn(len(qrCodes))],
-		"message": "扫码下载 AIdea，玩转 GPT，实在太有趣啦！",
+		"message": "扫码下载 DeepThink，玩转 GPT，实在太有趣啦！",
 	}
 
 	if user.User != nil {
 		if user.User.InviteCode != "" {
 			res["invite_code"] = user.User.InviteCode
-			res["message"] = fmt.Sprintf("扫码下载 AIdea，用我的专属邀请码 %s 注册，不仅免费用，还有额外奖励！", user.User.InviteCode)
+			res["message"] = fmt.Sprintf("扫码下载 DeepThink，用我的专属邀请码 %s 注册，不仅免费用，还有额外奖励！", user.User.InviteCode)
 		}
 	}
 
@@ -120,7 +115,7 @@ func (ctl *InfoController) VersionCheck(ctx web.Context) web.Response {
 		"has_update":     hasUpdate,
 		"server_version": CurrentVersion,
 		"force_update":   false,
-		"url":            "https://aidea.aicode.cc",
+		"url":            "https://app.deepthink.run",
 		"message":        fmt.Sprintf("新版本 %s 发布啦，赶快去更新吧！", CurrentVersion),
 	})
 }
